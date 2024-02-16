@@ -1,6 +1,6 @@
 # UnitySceneCollector
 
-Editor only use.
+Editor use only.
 Tested on Unity 2022.3
 
 Based on -> https://youtu.be/KRmqy22z0SM?si=0iRpqAPZ-Qww1G2k&t=655
