@@ -53,14 +53,19 @@ namespace npcWorld.SceneManagement {
         void SaveHierarchy() {
             _canSave = false;
             int c = SceneManager.sceneCount;
+            Scene baseScene = SceneManager.GetActiveScene();
+            var baseSceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(baseScene.path);
+            _sceneCollector.BaseScene = baseSceneAsset;
             _sceneCollector.SceneCollection.Clear();
             for (int i = 0; i < c; i++) {
                 Scene scene = SceneManager.GetSceneAt(i);
                 var sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(scene.path);
+
                 if (sceneAsset != _sceneCollector.BaseScene && !_sceneCollector.SceneCollection.Contains(sceneAsset)) {
                     _sceneCollector.SceneCollection.Add(sceneAsset);
                 }
             }
+
             _canSave = true;
         }
     }
